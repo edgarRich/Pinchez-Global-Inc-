@@ -5,42 +5,547 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Pinchez Global Inc is a world-class provider of innovative, sustainable, and reliable global packaging solutions for modern industry.">
     <title>Pinchez Global Inc | Global Packaging Solutions</title>
+    <!-- Font Awesome for crisp icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Modern CSS Reset & Styling */
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; color: #333; line-height: 1.6; }
-        header { background: #002d72; color: white; padding: 2rem; text-align: center; }
-        .container { max-width: 1000px; margin: auto; padding: 20px; }
-        .hero { text-align: center; padding: 50px 20px; background: #f4f4f4; }
-        .btn { display: inline-block; background: #002d72; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px; }
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
-        .card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; text-align: center; }
-        footer { text-align: center; padding: 20px; background: #333; color: white; margin-top: 40px; }
+        /* ----- modern reset & base ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fafbfc;
+            color: #1e2a3a;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* ----- header / navbar ----- */
+        .navbar {
+            background: #002d72;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .brand i {
+            font-size: 2rem;
+            color: #7bb3ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            border-bottom-color: #7bb3ff;
+        }
+
+        .nav-links .btn-outline-light {
+            background: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            color: white;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .nav-links .btn-outline-light:hover {
+            background: white;
+            color: #002d72;
+            border-color: white;
+        }
+
+        /* ----- hero section (with subtle pattern) ----- */
+        .hero {
+            background: linear-gradient(145deg, #eef3f9 0%, #dce6f2 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "♻️";
+            font-size: 18rem;
+            opacity: 0.04;
+            position: absolute;
+            right: -5%;
+            top: -20%;
+            transform: rotate(12deg);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #002d72;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h2 i {
+            color: #1a6bc4;
+            margin-right: 0.3rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #1f3a5f;
+            max-width: 600px;
+            margin: 0.5rem auto 1.8rem;
+            font-weight: 400;
+        }
+
+        .hero .btn-primary {
+            background: #002d72;
+            color: white;
+            padding: 0.9rem 2.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 40px;
+            border: none;
+            box-shadow: 0 8px 20px rgba(0, 45, 114, 0.25);
+            transition: 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            text-decoration: none;
+        }
+
+        .hero .btn-primary:hover {
+            background: #003c99;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 45, 114, 0.35);
+        }
+
+        /* ----- container & cards (glassmorphism touch) ----- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #002d72;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #3e5a7a;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.25s ease;
+            box-shadow: 0 8px 24px rgba(0, 20, 50, 0.04);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: white;
+            box-shadow: 0 20px 40px rgba(0, 45, 114, 0.08);
+            border-color: #c0d6f0;
+        }
+
+        .card i {
+            font-size: 3.2rem;
+            color: #002d72;
+            background: #e6eefb;
+            padding: 0.8rem;
+            border-radius: 60px;
+            margin-bottom: 1.2rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #002d72;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #2f4466;
+            font-weight: 400;
+        }
+
+        /* ----- stats / feature banner (dart/flutter vibe) ----- */
+        .stats-banner {
+            background: #002d72;
+            color: white;
+            border-radius: 40px;
+            padding: 2.5rem 2rem;
+            margin: 3rem 0 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: 0 12px 30px rgba(0, 45, 114, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1 1 120px;
+        }
+
+        .stat-item .number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .stat-item .label {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-item i {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+            color: #7bb3ff;
+        }
+
+        /* ----- CEO / contact section (refined) ----- */
+        .contact-section {
+            background: #f0f5fd;
+            border-radius: 40px;
+            padding: 2.5rem 2rem;
+            margin: 3rem 0 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.8rem;
+        }
+
+        .contact-info .ceo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 500;
+        }
+
+        .contact-info .ceo i {
+            font-size: 2rem;
+            color: #002d72;
+            background: white;
+            padding: 0.6rem;
+            border-radius: 40px;
+        }
+
+        .contact-info .ceo span {
+            font-weight: 400;
+            color: #1f3a5f;
+        }
+
+        .contact-info .phone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            font-weight: 500;
+        }
+
+        .contact-info .phone i {
+            color: #002d72;
+        }
+
+        .contact-section .btn-secondary {
+            background: white;
+            color: #002d72;
+            padding: 0.7rem 2.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid #c8d8ed;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-section .btn-secondary:hover {
+            background: #002d72;
+            color: white;
+            border-color: #002d72;
+        }
+
+        /* ----- footer (clean) ----- */
+        footer {
+            background: #1a2636;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 2rem 1.5rem;
+            margin-top: 4rem;
+            text-align: center;
+            border-top: 1px solid #2f405a;
+        }
+
+        footer .footer-brand {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 0.3rem;
+        }
+
+        footer i {
+            color: #7bb3ff;
+            margin: 0 0.2rem;
+        }
+
+        /* ----- responsive tweaks ----- */
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.8rem;
+                padding: 1.2rem;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.2rem;
+            }
+            .hero h2 {
+                font-size: 2.4rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .stats-banner {
+                flex-direction: column;
+                gap: 1.8rem;
+            }
+            .contact-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2.5rem 1rem;
+            }
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .card {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        /* small utility */
+        .text-muted {
+            opacity: 0.7;
+        }
     </style>
 </head>
 <body>
 
+    <!-- ====== HEADER / NAV ====== -->
     <header>
-        <h1>Pinchez Global Inc</h1>
-        <p>Innovation in Packaging</p>
+        <nav class="navbar">
+            <a href="#" class="brand">
+                <i class="fas fa-box-open"></i> Pinchez Global
+            </a>
+            <div class="nav-links">
+                <a href="#services">Solutions</a>
+                <a href="#contact">Contact</a>
+                <a href="#contact" class="btn-outline-light"><i class="fas fa-phone-alt"></i> Connect</a>
+            </div>
+        </nav>
     </header>
 
-    <div class="hero">
-        <h2>Global Packaging Solutions</h2>
-        <p>Delivering excellence, sustainability, and reliability to the global market.</p>
-        <a href="#contact" class="btn">Get in Touch</a>
+    <!-- ====== HERO ====== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2><i class="fas fa-globe-americas"></i> Global Packaging</h2>
+            <p>Innovative, sustainable & reliable — we deliver excellence across borders.</p>
+            <a href="#contact" class="btn-primary">
+                <i class="fas fa-paper-plane"></i> Let's talk
+            </a>
+        </div>
+    </section>
+
+    <!-- ====== SERVICES (cards) ====== -->
+    <div class="container" id="services">
+        <h2 class="section-title"><i class="fas fa-cubes" style="color: #002d72;"></i> Our core solutions</h2>
+        <p class="section-sub">Designed for modern industry, crafted with care.</p>
+
+        <div class="services-grid">
+            <div class="card">
+                <i class="fas fa-industry"></i>
+                <h3>Industrial Packaging</h3>
+                <p>Heavy-duty protection for global transit, engineered to withstand the toughest supply chains.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-leaf"></i>
+                <h3>Sustainable Materials</h3>
+                <p>Eco-friendly, recyclable solutions that reduce environmental impact without compromising quality.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Global Logistics</h3>
+                <p>Optimized distribution networks, ensuring your products arrive safely — anywhere in the world.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Smart Design</h3>
+                <p>Data-driven packaging design that minimizes waste, maximizes protection, and streamlines costs.</p>
+            </div>
+        </div>
+
+        <!-- === stats banner (flutter/dart inspired) === -->
+        <div class="stats-banner">
+            <div class="stat-item">
+                <i class="fas fa-map-pin"></i>
+                <span class="number">30+</span>
+                <span class="label">Countries</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-recycle"></i>
+                <span class="number">87%</span>
+                <span class="label">Recyclable</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-clock"></i>
+                <span class="number">24/7</span>
+                <span class="label">Support</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-trophy"></i>
+                <span class="number">A+</span>
+                <span class="label">Reliability</span>
+            </div>
+        </div>
+
+        <!-- ====== CONTACT / CEO section ====== -->
+        <div class="contact-section" id="contact">
+            <div class="contact-info">
+                <div class="ceo">
+                    <i class="fas fa-user-tie"></i>
+                    <div>
+                        <strong>Peter Kithinji</strong> <span>— CEO</span>
+                    </div>
+                </div>
+                <div class="phone">
+                    <i class="fas fa-phone-alt"></i> 0793 524 980
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.4rem; background: #e6eefb; padding: 0.4rem 1.2rem; border-radius: 40px;">
+                    <i class="fas fa-map-marker-alt" style="color: #002d72;"></i> Kahawa Wendani
+                </div>
+            </div>
+            <a href="mailto:info@pinchez.com" class="btn-secondary">
+                <i class="fas fa-envelope"></i> Email us
+            </a>
+        </div>
     </div>
 
-    <div class="container">
-        <section class="services">
-            <div class="card"><h3>Industrial Packaging</h3><p>Heavy-duty protection for global transit.</p></div>
-            <div class="card"><h3>Sustainable Materials</h3><p>Eco-friendly solutions for a greener future.</p></div>
-            <div class="card"><h3>Global Logistics</h3><p>Optimized distribution network worldwide.</p></div>
-        </section>
-    </div>
-
-    <footer id="contact">
-        <p>Contact CEO: Peter Kithinji 0793524980 | Headquarters: Kahawa Wendani</p>
+    <!-- ====== FOOTER ====== -->
+    <footer>
+        <div class="footer-brand">
+            <i class="fas fa-box-open"></i> Pinchez Global Inc
+        </div>
+        <p style="margin: 0.5rem 0; font-size: 0.95rem;">
+            <i class="fas fa-globe"></i> Global Packaging Solutions · Sustainable · Reliable
+        </p>
+        <p style="margin: 0.3rem 0; font-size: 0.9rem;">
+            © 2026 Pinchez Global Inc — crafted with <i class="fas fa-heart" style="color: #ff7b89;"></i> for the future.
+        </p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.5;">
+            <i class="fas fa-code"></i> Flutter · Dart · Web
+        </p>
     </footer>
 
+    <!-- small interactive "flutter/dart" hint – just for show, no external framework -->
+    <script>
+        (function() {
+            // subtle console greeting (like a dart print)
+            console.log("🚀 Pinchez Global Inc — Built with ❤️ and a Flutter state of mind.");
+            // add a tiny interactive effect on cards (just for polish)
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = 'all 0.2s ease';
+                });
+            });
+        })();
+    </script>
+
 </body>
-  </html>
+</html>
